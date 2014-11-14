@@ -1,0 +1,28 @@
+{
+  "name": "gulp-bower-normalize",
+  "version": "0.0.0",
+  "description": "Takes a list of bower files and normalizes them by as <package name>/<type> where type is inferred by file extension or taken from 'override' section of bower.json",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cthrax/gulp-bower-normalize.git"
+  },
+  "keywords": [
+    "gulpplugin"
+  ],
+  "author": "Myles Bostwick",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cthrax/gulp-bower-normalize/issues"
+  },
+  "homepage": "https://github.com/cthrax/gulp-bower-normalize",
+  "dependencies": {
+    "gulp-util": "^3.0.1",
+    "gulp-rename": "^1.2.0",
+    "through2": "^0.6.3",
+    "minimatch": "^1.0.0"
+  }
+}
