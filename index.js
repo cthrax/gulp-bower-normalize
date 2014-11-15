@@ -69,10 +69,16 @@ function gulpBowerNormalize(options) {
                 }
             }
 
-            console.log("components", components.packageName, type, components.filename);
-            var path = Path.join(components.packageName, type, components.filename);
+            var path = Path.join(file.cwd, components.packageName, type);
             console.log("Setting path to " + path);
-            file.path = path
+            console.log("CWD: ", file.cwd);
+            console.log("path: ", file.path);
+            console.log("base: ", file.base);
+            //file.base = Path.join(file.cwd, file.base);
+            file.path = Path.join(file.cwd, file.base, components.packageName, type, components.filename);
+            console.log("CWD: ", file.cwd);
+            console.log("path: ", file.path);
+            console.log("base: ", file.base);
         }
 
         this.push(file);

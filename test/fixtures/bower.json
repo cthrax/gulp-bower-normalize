@@ -1,0 +1,7 @@
+{
+  "overrides": {
+    "dependency1": {
+      "main": "some.js"
+    }
+  }
+}
