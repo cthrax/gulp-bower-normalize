@@ -14,7 +14,7 @@
     "gulpplugin",
     "bower"
   ],
-  "author": "Myles Bostwick",
+  "author": "Myles Bostwick <npmjs@zithora.com> (http://www.zithora.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cthrax/gulp-bower-normalize/issues"
