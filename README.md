@@ -1,10 +1,29 @@
-gulp-bower-normalize
-================
+#gulp-bower-normalize
 
-Use rules in the bower.json or implicit rules to normalize the files being copied out of bower_components so that a consistent and clean version of the bower dependencies can be checked into the repo. This is intended to work with main-bower-files.
+> Use rules in the bower.json or implicit rules to normalize the files being copied out of bower_components so that a consistent and clean version of the bower dependencies can be checked into the repo. This is intended to work with main-bower-files.
+
+##INSTALL
+
+```
+npm install --save-dev gulp-bower-normalize
+```
+
+##USAGE
+Designed to work with [main-bower-files](https://github.com/ck86/main-bower-files) as so:
+
+```javascript
+gulp.task('default', function() {
+    var bower = require('main-bower-files');
+    var bowerNormalizer = require('gulp-bower-normalize');
+    return gulp.src(bower(), {base: './bower_components'})
+        .pipe(bowerNormalizer({bowerJson: './bower.json'}))
+        .pipe(gulp.dest('./bower_dependencies/'))
+});
+```
 
 bower.json
-```json
+
+```javascript
 {
     name and otherstuff
     "dependencies": {
@@ -34,23 +53,17 @@ bower.json
 }
 ```
 
-USE
-======
-Designed to work with [main-bower-files](https://github.com/ck86/main-bower-files) as so:
+##API
 
-```javascript
-gulp.task('default', function() {
-    var bower = require('main-bower-files');
-    var bowerNormalizer = require('gulp-bower-normalize');
-    return gulp.src(bower(), {base: './bower_components'})
-        .pipe(bowerNormalizer({bowerJson: './bower.json'}))
-        .pipe(gulp.dest('./bower_dependencies/'))
-});
-```
+###bowerNormalize(options)
 
-OPTIONS
-=======
+####options.bowerJson
 
-####bowerJson
+Type: `string`
+Default: `./bower.json`
 
 Path to bower.json that overrides will come from. This should be relative to the gulpfile.js.
+
+## License
+
+MIT © [Myles Bostwick](http://www.zithora.com)
