@@ -11,7 +11,8 @@
     "url": "git://github.com/cthrax/gulp-bower-normalize.git"
   },
   "keywords": [
-    "gulpplugin"
+    "gulpplugin",
+    "bower"
   ],
   "author": "Myles Bostwick",
   "license": "MIT",
@@ -21,11 +22,16 @@
   "homepage": "https://github.com/cthrax/gulp-bower-normalize",
   "dependencies": {
     "gulp-util": "^3.0.1",
-    "gulp-rename": "^1.2.0",
     "through2": "^0.6.3",
     "minimatch": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.0.1"
+    "gulp-mocha": "^1.1.1",
+    "chai": "^1.10.0",
+    "event-stream": "^3.1.7",
+    "vinyl": "^0.4.5",
+    "gulp": "^3.8.10",
+    "gulp-jshint": "^1.9.0",
+    "jshint-stylish": "^1.0.0"
   }
 }

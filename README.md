@@ -33,3 +33,24 @@ bower.json
     }
 }
 ```
+
+USE
+======
+Designed to work with [main-bower-files](https://github.com/ck86/main-bower-files) as so:
+
+```javascript
+gulp.task('default', function() {
+    var bower = require('main-bower-files');
+    var bowerNormalizer = require('gulp-bower-normalize');
+    return gulp.src(bower(), {base: './bower_components'})
+        .pipe(bowerNormalizer({bowerJson: './bower.json'}))
+        .pipe(gulp.dest('./bower_dependencies/'))
+});
+```
+
+OPTIONS
+=======
+
+####bowerJson
+
+Path to bower.json that overrides will come from. This should be relative to the gulpfile.js.

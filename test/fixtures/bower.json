@@ -2,6 +2,34 @@
   "overrides": {
     "dependency1": {
       "main": "some.js"
+    },
+    "dependency2": {
+      "main": "some.js",
+      "normalize": {
+        "javascript": "*.js"
+      }
+    },
+    "dependency3": {
+      "main": ["some.js", "some.css"],
+      "normalize": {
+        "js": "*.js",
+        "css": "*.css"
+      }
+    },
+    "dependency4": {
+      "main": ["some.js", "some.json"],
+      "normalize": {
+        "js": ["*.js", "*.json"]
+      }
+    },
+    "dependency5": {
+      "main": ["some.js", "some.json"],
+      "normalize": {
+        "js": "*.js"
+      }
+    },
+    "dependency6": {
+      "main": "some/long/path/to/file.js"
     }
   }
 }
