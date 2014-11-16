@@ -1,4 +1,4 @@
-#gulp-bower-normalize
+#gulp-bower-normalize [![Build Status](https://travis-ci.org/cthrax/gulp-bower-normalize.svg)](https://travis-ci.org/cthrax/gulp-bower-normalize)
 
 > Use rules in the bower.json or implicit rules to normalize the files being copied out of bower_components so that a consistent and clean version of the bower dependencies can be checked into the repo. This is intended to work with main-bower-files.
 
