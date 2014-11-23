@@ -53,6 +53,8 @@ bower.json
 }
 ```
 
+**NOTE:** Comments are not valid JSON, so if you're copying this, you'll need to remove them.
+
 ##API
 
 ###bowerNormalize(options)
