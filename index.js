@@ -29,7 +29,8 @@ function gulpBowerNormalize(userOptions) {
     bowerJson = Path.join(process.cwd(), bowerJson);
 
     try {
-        overrides = require(bowerJson).overrides || {};
+        overrides = require(bowerJson);
+        overrides = overrides.overrides || {};
     } catch(e) {
         throw new PluginError(PLUGIN_NAME, "No bower.json at " + bowerJson + " or overrides invalid!");
     }

@@ -3,7 +3,6 @@ var File = require('vinyl');
 var es = require('event-stream');
 var normalizer = require('../');
 describe("gulp-bower-normalize", function() {
-    var bowerJson = require('./fixtures/bower.json');
     var assertNormalized = function(fakeFile, expected) {
         var myNormalizer = normalizer({bowerJson: './test/fixtures/bower.json'});
         myNormalizer.write(fakeFile);
@@ -13,6 +12,7 @@ describe("gulp-bower-normalize", function() {
     };
 
     var getFakeFiles = function(packageName) {
+        var bowerJson = require('./fixtures/bower.json');
         var depOverrides = bowerJson.overrides[packageName];
         var files = [];
         var main = depOverrides.main;
@@ -30,6 +30,20 @@ describe("gulp-bower-normalize", function() {
 
         return files;
     };
+
+    it("should implicitly set normalized path without override section", function() {
+        var fakeFile = new File({
+            cwd: '/',
+            base: '/path',
+            path: '/path/to/a/file.ext'
+        });
+
+        var myNormalizer = normalizer({bowerJson: './test/fixtures/bower-without-override.json'});
+        myNormalizer.write(fakeFile);
+        myNormalizer.once("data", function(file) {
+            expect(file.path).to.equal('/path/to/ext/file.ext');
+        });
+    });
 
     it("should implicitly set normalized path without overrides", function() {
         var fakeFile = new File({

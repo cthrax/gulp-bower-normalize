@@ -1,6 +1,6 @@
 {
   "name": "gulp-bower-normalize",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Takes a list of bower files and normalizes them by as <package name>/<type> where type is inferred by file extension or taken from 'override' section of bower.json",
   "main": "index.js",
   "scripts": {
