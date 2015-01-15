@@ -16,7 +16,8 @@ function getComponents(file) {
     return {
         ext: Path.extname(relativePath).substr(1), // strip dot
         filename: Path.basename(relativePath),
-        packageName: pathParts[0]
+        packageName: pathParts.shift(),
+        path: pathParts.join(Path.sep)
     };
 }
 
@@ -41,6 +42,10 @@ function gulpBowerNormalize(userOptions) {
             type = options.useExtnameFolder ? components.ext : '',
             pkgOverrides = null,
             normalize = null;
+
+        if (!options.flat) {
+            type = Path.join(components.path, type);
+        }
 
         // Check if there are overrides
         if (components.packageName in overrides) {
