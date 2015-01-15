@@ -38,7 +38,7 @@ function gulpBowerNormalize(userOptions) {
     // creating a stream through which each file will pass
     var stream = through.obj(function(file, enc, cb) {
         var components = getComponents(file),
-            type = components.ext,
+            type = options.useExtnameFolder ? components.ext : '',
             pkgOverrides = null,
             normalize = null;
 
