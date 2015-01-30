@@ -66,6 +66,15 @@ Default: `./bower.json`
 
 Path to bower.json that overrides will come from. This should be relative to the gulpfile.js.
 
+####options.flatten
+
+Type: `boolean`
+Default: `false`
+
+Option to remove the component level folders. This would turn `/lib/jquery/js/jquery.js` into `/lib/js/jquery.js`.
+
+**Note:** If your components have files with the same name then only one of them will be included in the results.
+
 ## License
 
 MIT © [Myles Bostwick](http://www.zithora.com)
