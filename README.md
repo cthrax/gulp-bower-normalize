@@ -75,6 +75,25 @@ Option to remove the component level folders. This would turn `/lib/jquery/js/jq
 
 **Note:** If your components have files with the same name then only one of them will be included in the results.
 
+####options.checkPath
+
+Type: `boolean`
+Default: `false`
+
+This option allows a multi-level path on the normalization destination. This allows matching similar to the following:
+
+```
+ "dependency7": {
+      "main": ["some.js", "some/other.js"],
+      "normalize": {
+        "js": "*.js",
+        "js/some": "**/some/*.js"
+      }
+ }
+```
+
+**Note:** This will not work in conjunction with the flatten option.
+
 ## License
 
 MIT © [Myles Bostwick](http://www.zithora.com)
