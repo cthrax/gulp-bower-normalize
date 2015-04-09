@@ -61,7 +61,14 @@ function gulpBowerNormalize(userOptions) {
                     filter.map(function(glob) {
                         // Potential bug here if multiple types match glob
                         // Last one in wins right now, maybe throw error?
-                        if (minimatch(components.filename, glob)) {
+                        var path = components.filename;
+
+                        // If checkPath is set to true, pass the relative path to the matching utility
+                        if (options.checkPath) {
+                            path = file.relative;
+                        }
+
+                        if (minimatch(path, glob)) {
                             type = key;
                         }
                     });

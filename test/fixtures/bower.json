@@ -30,6 +30,13 @@
     },
     "dependency6": {
       "main": "some/long/path/to/file.js"
+    },
+    "dependency7": {
+      "main": ["some.js", "some/other.js"],
+      "normalize": {
+        "js": "*.js",
+        "js/some": "**/some/*.js"
+      }
     }
   }
 }
