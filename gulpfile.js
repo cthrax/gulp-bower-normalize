@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
-var jshint = require('gulp-jshint');
 var eslint = require('gulp-eslint');
 
 gulp.task('test', function() {
