@@ -1,5 +1,27 @@
 {
   "overrides": {
+    "normalizeMulti": [
+      {
+        "dependencies": ["dependency8", "dependency9"],
+        "normalize": {
+          "font": ["*.ttf", "*.woff2"],
+          "css": ["*.css"]
+        }
+      },
+      {
+        "dependencies": ["dependency9", "dependency10"],
+        "normalize": {
+          "javascript": ["*.js"],
+          "lessFiles": ["*less"]
+        }
+      },
+      {
+        "dependencies": ["dependency9"],
+        "normalize": {
+          "javascript": ["*.*"]
+        }
+      }
+    ],
     "dependency1": {
       "main": "some.js"
     },
@@ -36,6 +58,12 @@
       "normalize": {
         "js": "*.js",
         "js/some": "**/some/*.js"
+      }
+    },
+    "dependency8": {
+      "main": "some.js",
+      "normalize": {
+        "js": ["*.js"]
       }
     }
   }

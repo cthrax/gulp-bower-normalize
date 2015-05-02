@@ -8,6 +8,7 @@ var PluginError = gutil.PluginError;
 
 // consts
 var PLUGIN_NAME = 'gulp-bower-normalize';
+var NORMALIZE_MULTI_KEY = 'normalizeMulti';
 
 // Gets the component parts, package name, filename, ext
 function getComponents(file) {
@@ -33,6 +34,46 @@ function gulpBowerNormalize(userOptions) {
         overrides = overrides.overrides || {};
     } catch(e) {
         throw new PluginError(PLUGIN_NAME, "No bower.json at " + bowerJson + " or overrides invalid!");
+    }
+
+    // Add any multiOverrides
+    if (NORMALIZE_MULTI_KEY in overrides) {
+        var multiNormalize = overrides[NORMALIZE_MULTI_KEY];
+        if (!Array.isArray(multiNormalize)) {
+            multiNormalize = [multiNormalize];
+        }
+        multiNormalize.forEach(function(multiNormalizeObject) {
+            try {
+                multiNormalizeObject.dependencies.forEach(function(dependency) {
+                    if (dependency in overrides) {
+                        var mergedOverride = {};
+                        if ('normalize' in overrides[dependency]) {
+                            mergedOverride = overrides[dependency].normalize;
+                        }
+                        // This would be a one-liner in lodash, but just implement here for a simple object to avoid
+                        // the additional dependency
+                        Object.keys(multiNormalizeObject.normalize).forEach(function(depFolder) {
+                            // If the multi has the same folder as the manual, the manual override wins flat out, no merging
+                            if (!(depFolder in mergedOverride)) {
+                                mergedOverride[depFolder] = multiNormalizeObject.normalize[depFolder];
+                            }
+                        });
+
+                        overrides[dependency].normalize = mergedOverride;
+                    } else {
+                        // nothing is in the overrides, we can just put the multi values straight in
+                        overrides[dependency] = {
+                            'normalize': multiNormalizeObject.normalize
+                        };
+                    }
+                });
+            } catch(e) {
+                throw new PluginError(PLUGIN_NAME, "Invalid " + NORMALIZE_MULTI_KEY + " object must be in form {dependencies:[], normalize:{}}");
+            }
+        });
+
+        // Remove from the overrides so it doesn't get processed as a dependency
+        delete overrides[NORMALIZE_MULTI_KEY];
     }
 
     // creating a stream through which each file will pass

@@ -33,6 +33,32 @@ bower.json
         "dependency4": "~1.0.1"
     },
     "overrides": {
+        // Muli allows one normalize definition to span multiple dependencies
+        // NOTE: This is first one in wins for the multi list and will always
+        // defer to the overrides.
+        "normalizeMulti": [
+            {
+                "dependencies": ["dependency1", "dependency2"],
+                "normalize": {
+                    "img": ["*.jpeg", "*.png", "*.jpg"],
+                    "font": ["*.ttf", "*.woff2"]
+                }
+            },
+            {
+                "dependencies": ["dependency2", "dependency3"],
+                "normalize": {
+                    // Note since dependency3 defines js, it won't get this definition
+                    "js": ["*.js", "*.less"],
+                }
+            },
+            {
+                "dependencies": ["dependency2"],
+                "normalize": {
+                    // Note since dependency2 already had js defined by the multi, it won't get this definition
+                    "js": ["*.*"],
+                }
+            }
+        ],
         // Implicitly normalizes this file by file extension 'dependency1/js/some.js'
         "dependency1": {
             "main": "some.js"
