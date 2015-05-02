@@ -27,12 +27,11 @@
     "path": "^0.4.9"
   },
   "devDependencies": {
-    "gulp-mocha": "^1.1.1",
     "chai": "^1.10.0",
     "event-stream": "^3.1.7",
-    "vinyl": "^0.4.5",
     "gulp": "^3.8.10",
-    "gulp-jshint": "^1.9.0",
-    "jshint-stylish": "^1.0.0"
+    "gulp-eslint": "^0.11.1",
+    "gulp-mocha": "^1.1.1",
+    "vinyl": "^0.4.5"
   }
 }
