@@ -118,9 +118,9 @@ function gulpBowerNormalize(userOptions) {
         }
 
         if (options.flatten) {
-            file.path = Path.join(file.cwd, file.base, type, components.filename);
+            file.path = Path.join(file.base, type, components.filename);
         } else {
-            file.path = Path.join(file.cwd, file.base, components.packageName, type, components.filename);
+            file.path = Path.join(file.base, components.packageName, type, components.filename);
         }
 
         this.push(file);
