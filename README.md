@@ -85,12 +85,19 @@ bower.json
 
 ###bowerNormalize(options)
 
+####options.basePath
+
+Type: `string`
+Default: `process.cwd()`
+
+Path to search for the bower.json file in.
+
 ####options.bowerJson
 
 Type: `string`
 Default: `./bower.json`
 
-Path to bower.json that overrides will come from. This should be relative to the gulpfile.js.
+Path to bower.json that overrides will come from. This should be relative to `options.BasePath`.
 
 ####options.flatten
 
@@ -100,6 +107,13 @@ Default: `false`
 Option to remove the component level folders. This would turn `/lib/jquery/js/jquery.js` into `/lib/js/jquery.js`.
 
 **Note:** If your components have files with the same name then only one of them will be included in the results.
+
+####options.typeTop
+
+Type: `boolean`
+Default: `false`
+
+Option to put the type folder on top of the hierarchy. This would turn `/lib/jquery/js/jquery.js` into `/lib/js/jquery/jquery.js`.
 
 ####options.checkPath
 
