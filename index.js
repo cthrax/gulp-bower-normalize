@@ -24,10 +24,11 @@ function getComponents(file) {
 // plugin level function (dealing with files)
 function gulpBowerNormalize(userOptions) {
     var options = userOptions || {},
+        basePath = options.basePath || process.cwd(),
         bowerJson = options.bowerJson || "./bower.json",
         overrides = {};
 
-    bowerJson = Path.join(process.cwd(), bowerJson);
+    bowerJson = Path.join(basePath, bowerJson);
 
     try {
         overrides = require(bowerJson);
