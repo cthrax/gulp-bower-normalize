@@ -24,10 +24,11 @@ function getComponents(file) {
 // plugin level function (dealing with files)
 function gulpBowerNormalize(userOptions) {
     var options = userOptions || {},
+        basePath = options.basePath || process.cwd(),
         bowerJson = options.bowerJson || "./bower.json",
         overrides = {};
 
-    bowerJson = Path.join(process.cwd(), bowerJson);
+    bowerJson = Path.join(basePath, bowerJson);
 
     try {
         overrides = require(bowerJson);
@@ -118,9 +119,11 @@ function gulpBowerNormalize(userOptions) {
         }
 
         if (options.flatten) {
-            file.path = Path.join(file.cwd, file.base, type, components.filename);
+            file.path = Path.join(file.base, type, components.filename);
+        } else if (options.typeTop) {
+            file.path = Path.join(file.base, type, components.packageName, components.filename);
         } else {
-            file.path = Path.join(file.cwd, file.base, components.packageName, type, components.filename);
+            file.path = Path.join(file.base, components.packageName, type, components.filename);
         }
 
         this.push(file);
