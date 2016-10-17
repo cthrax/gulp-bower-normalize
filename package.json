@@ -22,7 +22,7 @@
   "homepage": "https://github.com/cthrax/gulp-bower-normalize",
   "dependencies": {
     "gulp-util": "^3.0.1",
-    "through2": "^0.6.3",
+    "through2": "^2.0.1",
     "minimatch": "^3.0.3",
     "path": "^0.4.9"
   },
