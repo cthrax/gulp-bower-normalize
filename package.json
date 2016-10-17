@@ -24,14 +24,14 @@
     "gulp-util": "^3.0.1",
     "through2": "^2.0.1",
     "minimatch": "^3.0.3",
-    "path": "^0.4.9"
+    "path": "^0.12.7"
   },
   "devDependencies": {
-    "chai": "^1.10.0",
+    "chai": "^3.5.0",
     "event-stream": "^3.1.7",
     "gulp": "^3.8.10",
-    "gulp-eslint": "^0.11.1",
-    "gulp-mocha": "^1.1.1",
-    "vinyl": "^0.4.5"
+    "gulp-eslint": "^3.0.1",
+    "gulp-mocha": "^3.0.1",
+    "vinyl": "^2.0.0"
   }
 }
