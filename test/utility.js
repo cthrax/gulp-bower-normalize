@@ -20,6 +20,13 @@ var assertNormalized = function(fakeFile, expected) {
     });
 };
 
+var assertTypeTop = function(fakeFile, expected) {
+  var myNormalizer = normalizer({typeTop: true, bowerJson: './test/fixtures/bower.json'});
+  myNormalizer.write(fakeFile);
+  myNormalizer.once('data', function(file) {
+    expect(file.path).to.equal(Path.normalize(expected));
+  });
+}
 var assertPathChecked = function(fakeFile, expected) {
     var myNormalizer = normalizer({checkPath: true, bowerJson: './test/fixtures/bower.json'});
     myNormalizer.write(fakeFile);
@@ -57,5 +64,6 @@ module.exports = {
     getFakeFiles: getFakeFiles,
     assertFlattened: assertFlattened,
     assertNormalized: assertNormalized,
+    assertTypeTop: assertTypeTop,
     assertPathChecked: assertPathChecked
 };
