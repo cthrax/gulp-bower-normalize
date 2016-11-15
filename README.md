@@ -1,14 +1,14 @@
-#gulp-bower-normalize [![Build Status](https://travis-ci.org/cthrax/gulp-bower-normalize.svg)](https://travis-ci.org/cthrax/gulp-bower-normalize)
+# gulp-bower-normalize [![Build Status](https://travis-ci.org/cthrax/gulp-bower-normalize.svg)](https://travis-ci.org/cthrax/gulp-bower-normalize)
 
 > Use rules in the bower.json or implicit rules to normalize the files being copied out of bower_components so that a consistent and clean version of the bower dependencies can be checked into the repo. This is intended to work with main-bower-files.
 
-##INSTALL
+## INSTALL
 
 ```
 npm install --save-dev gulp-bower-normalize
 ```
 
-##USAGE
+## USAGE
 Designed to work with [main-bower-files](https://github.com/ck86/main-bower-files) as so:
 
 ```javascript
@@ -79,43 +79,43 @@ bower.json
 }
 ```
 
-**NOTE:** Comments are not valid JSON, so if you're copying this, you'll need to remove them.
+> **Note:** Comments are not valid JSON, so if you're copying this, you'll need to remove them.
 
-##API
+## API
 
-###bowerNormalize(options)
+### bowerNormalize(options)
 
-####options.basePath
+#### options.basePath
 
 Type: `string`
 Default: `process.cwd()`
 
 Path to search for the bower.json file in.
 
-####options.bowerJson
+#### options.bowerJson
 
 Type: `string`
 Default: `./bower.json`
 
 Path to bower.json that overrides will come from. This should be relative to `options.BasePath`.
 
-####options.flatten
+#### options.flatten
 
 Type: `boolean`
 Default: `false`
 
 Option to remove the component level folders. This would turn `/lib/jquery/js/jquery.js` into `/lib/js/jquery.js`.
 
-**Note:** If your components have files with the same name then only one of them will be included in the results.
+> **Note:** If your components have files with the same name then only one of them will be included in the results.
 
-####options.typeTop
+#### options.typeTop
 
 Type: `boolean`
 Default: `false`
 
 Option to put the type folder on top of the hierarchy. This would turn `/lib/jquery/js/jquery.js` into `/lib/js/jquery/jquery.js`.
 
-####options.checkPath
+#### options.checkPath
 
 Type: `boolean`
 Default: `false`
@@ -132,7 +132,33 @@ This option allows a multi-level path on the normalization destination. This all
  }
 ```
 
-**Note:** This will not work in conjunction with the flatten option.
+> **Note:** This will not work in conjunction with the flatten option.
+
+## Frequently Asked Questions
+
+### Unexpected folder normalization
+
+Be aware of your JSON keys of the normalize property of your `bower.json`.  
+Only unique JSON keys could be parsed correctly into your expected destination folder structure.
+
+### Example
+
+This could lead to unexpected normalization
+
+````
+"normalize": {
+  ".": "**/*.scss",
+  ".": "**/*.js"
+}
+````
+
+The right expression should be
+
+````
+"normalize": {
+  ".": ["**/*.scss", "**/*.js"]
+}
+````
 
 ## License
 
