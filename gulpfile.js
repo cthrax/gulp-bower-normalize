@@ -7,12 +7,11 @@ gulp.task('test', function() {
         .pipe(mocha({reporter: 'spec'}));
 });
 
-gulp.task('lint', ['test'], function() {
+gulp.task('lint', function() {
     return gulp.src('index.js')
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
 });
 
-gulp.task('default', ['test', 'lint'], function() {
-});
+gulp.task('default', gulp.series('test', 'lint'));
